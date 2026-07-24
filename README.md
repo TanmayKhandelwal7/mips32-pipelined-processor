@@ -14,8 +14,6 @@ and includes **data hazard detection with forwarding**, control-flow (branch) ha
 
 ![MIPS32 Pipeline Datapath](datapath.png)
 
-*(Save the datapath diagram you have into an `images/` folder in the repo as `datapath.png` so it renders here.)*
-
 The datapath shows the standard 5-stage pipeline registers (`IF/ID`, `ID/EX`, `EX/MEM`, `MEM/WB`), the register bank (`rs`, `rt` reads), sign extension for immediates, the ALU with an equality comparator for branches, and separate access points into data memory (`DM`) and instruction memory (`IM`).
 
 ---
