@@ -12,7 +12,7 @@ and includes **data hazard detection with forwarding**, control-flow (branch) ha
 
 ## Datapath
 
-![MIPS32 Pipeline Datapath](images/datapath.png)
+![MIPS32 Pipeline Datapath](datapath.png)
 
 *(Save the datapath diagram you have into an `images/` folder in the repo as `datapath.png` so it renders here.)*
 
