@@ -112,7 +112,6 @@ AFTER: [12, 42, 88, 95]
 - **Smarter control hazard handling**: replace the current "squash on taken branch" approach with a **2-bit or 3-bit branch predictor** (e.g. saturating counter / branch history table) to reduce pipeline bubbles on taken branches.
 - **Load-use hazard detection**: add a hazard-detect + stall unit for the case where an instruction immediately after a `LW` uses the loaded register (currently relies on the compiler/programmer inserting `NOP`s).
 - **Full forwarding paths**: extend forwarding to also cover MEM/WB → EX/ID paths (currently only EX/MEM → ID is implemented) for back-to-back dependent instructions further apart in the pipeline.
-- **Memory-mapped I/O** or a simple UART for observing processor output without relying on `$display` in the testbench.
 
 ---
 
