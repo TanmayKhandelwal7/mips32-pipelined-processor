@@ -107,7 +107,7 @@ end
     begin
       EX_MEM_type  <= #2 ID_EX_type;
       EX_MEM_IR    <= #2 ID_EX_IR;
-      TAKEN_BRANCH <= #2 0;
+    
 
       case (ID_EX_type)
         RR_ALU: begin
