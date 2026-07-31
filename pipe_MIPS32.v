@@ -26,9 +26,8 @@ module pipe_MIPS32 (clk1, clk2);
   reg HALTED;         // Set after HLT instruction is completed
   reg TAKEN_BRANCH;   // Required to disable instructions after branch
 
-  // -------------------------------------------------------------
+ 
   // IF Stage
-  // -------------------------------------------------------------
   always @(posedge clk1)
     if (HALTED == 0)
     begin
@@ -49,13 +48,12 @@ module pipe_MIPS32 (clk1, clk2);
       end
     end
 
-  // -------------------------------------------------------------
   // ID Stage
-  // -------------------------------------------------------------
+
   always @(posedge clk2)
     if (HALTED == 0)
     begin
-     // 1. The Default Read (from the register file)
+   
 if (IF_ID_IR[25:21] == 5'b00000) 
     ID_EX_A <= 0;
 else 
@@ -102,16 +100,14 @@ end
         default:                     ID_EX_type <= #2 HALT;
       endcase
     end
-
-  // -------------------------------------------------------------
+  
   // EX Stage
-  // -------------------------------------------------------------
   always @(posedge clk1)
     if (HALTED == 0)
     begin
       EX_MEM_type  <= #2 ID_EX_type;
       EX_MEM_IR    <= #2 ID_EX_IR;
-//      TAKEN_BRANCH <= #2 0;
+      TAKEN_BRANCH <= #2 0;
 
       case (ID_EX_type)
         RR_ALU: begin
@@ -143,10 +139,8 @@ end
         end
       endcase
     end
-
-  // -------------------------------------------------------------
+  
   // MEM Stage
-  // -------------------------------------------------------------
   always @(posedge clk2)
     if (HALTED == 0)
     begin
@@ -164,9 +158,7 @@ end
       endcase
     end
 
-  // -------------------------------------------------------------
   // WB Stage
-  // -------------------------------------------------------------
   always @(posedge clk1)
   begin
     if (TAKEN_BRANCH == 0) // Disable write if branch taken
